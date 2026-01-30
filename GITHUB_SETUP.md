@@ -63,3 +63,30 @@ git push -u origin main
 | 4 | `git remote add origin https://github.com/아이디/저장소.git` → `git branch -M main` → `git push -u origin main` |
 
 이후에는 수정 후 `git add .` → `git commit -m "메시지"` → `git push` 로 올리면 됩니다.
+
+---
+
+## 한글 커밋 메시지 (GitHub에서 깨지지 않게)
+
+Windows 터미널 기본 인코딩이 CP949라서, 한글 커밋 메시지가 GitHub에서 깨질 수 있습니다.
+
+**방법 1 – 스크립트 사용 (권장)**  
+프로젝트 루트에서:
+
+```powershell
+git add .
+.\scripts\commit-ko.ps1 -m "한글 커밋 메시지"
+git push
+```
+
+**방법 2 – 터미널에서 UTF-8 설정 후 커밋**  
+PowerShell에서:
+
+```powershell
+chcp 65001
+git add .
+git commit -m "한글 커밋 메시지"
+git push
+```
+
+이 저장소에는 이미 `i18n.commitEncoding=utf-8` 이 설정되어 있어, UTF-8로 저장된 메시지는 GitHub에서 정상 표시됩니다.
