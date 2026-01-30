@@ -1,0 +1,10 @@
+# Netlify 배포 설정 (AI 프롬프트 매니저)
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# SPA: 모든 경로를 index.html로 (필요 시)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
